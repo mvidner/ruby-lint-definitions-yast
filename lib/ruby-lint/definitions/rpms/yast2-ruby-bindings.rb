@@ -1,7 +1,7 @@
 # This file was automatically generated, any manual changes will be lost the
 # next time this file is generated.
 #
-# Platform: ruby 2.1.2
+# Platform: ruby 2.2.5
 
 RubyLint.registry.register('Yast') do |defs|
   defs.define_constant('Yast') do |klass|
@@ -1135,6 +1135,20 @@ RubyLint.registry.register('Yast') do |defs|
 
   end
 
+  defs.define_constant('Yast::Client::Debugger') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('installed?')
+
+    klass.define_method('start') do |method|
+      method.define_('remote')
+      method.define_('port')
+      method.define_('start_client')
+    end
+
+    klass.define_method('start_from_env')
+  end
+
   defs.define_constant('Yast::Client::Exportable') do |klass|
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 
@@ -2001,6 +2015,8 @@ RubyLint.registry.register('Yast') do |defs|
       method.define_rest_argument('args')
     end
 
+    klass.define_method('ask_to_run_debugger?')
+
     klass.define_method('call') do |method|
       method.define_rest_argument('args')
     end
@@ -2011,6 +2027,10 @@ RubyLint.registry.register('Yast') do |defs|
 
     klass.define_method('call_builtin_wrapper') do |method|
       method.define_rest_argument('args')
+    end
+
+    klass.define_method('internal_error_msg') do |method|
+      method.define_argument('e')
     end
 
     klass.define_method('run_client') do |method|
@@ -2108,6 +2128,20 @@ RubyLint.registry.register('Yast') do |defs|
     klass.define_method('to_term') do |method|
       method.define_argument('object')
     end
+  end
+
+  defs.define_constant('Yast::Debugger') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('installed?')
+
+    klass.define_method('start') do |method|
+      method.define_('remote')
+      method.define_('port')
+      method.define_('start_client')
+    end
+
+    klass.define_method('start_from_env')
   end
 
   defs.define_constant('Yast::Exportable') do |klass|
@@ -3076,6 +3110,8 @@ RubyLint.registry.register('Yast') do |defs|
       method.define_rest_argument('args')
     end
 
+    klass.define_method('ask_to_run_debugger?')
+
     klass.define_method('call') do |method|
       method.define_rest_argument('args')
     end
@@ -3086,6 +3122,10 @@ RubyLint.registry.register('Yast') do |defs|
 
     klass.define_method('call_builtin_wrapper') do |method|
       method.define_rest_argument('args')
+    end
+
+    klass.define_method('internal_error_msg') do |method|
+      method.define_argument('e')
     end
 
     klass.define_method('run_client') do |method|
