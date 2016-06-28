@@ -1141,9 +1141,6 @@ RubyLint.registry.register('Yast') do |defs|
     klass.define_method('installed?')
 
     klass.define_method('start') do |method|
-      method.define_('remote')
-      method.define_('port')
-      method.define_('start_client')
     end
 
     klass.define_method('start_from_env')
@@ -2136,9 +2133,6 @@ RubyLint.registry.register('Yast') do |defs|
     klass.define_method('installed?')
 
     klass.define_method('start') do |method|
-      method.define_('remote')
-      method.define_('port')
-      method.define_('start_client')
     end
 
     klass.define_method('start_from_env')
