@@ -1,13 +1,10 @@
 # This file was automatically generated, any manual changes will be lost the
 # next time this file is generated.
 #
-# Platform: ruby 2.1.2
+# Platform: ruby 2.2.5
 
-#puts "PKG1"
 RubyLint.registry.register('Yast::Pkg') do |defs|
-#  puts "PKG2"
   defs.define_constant('Yast::Pkg') do |klass|
-#    puts "PKG3"
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 
     klass.define_method('AddLock') do |method|
@@ -590,6 +587,10 @@ RubyLint.registry.register('Yast::Pkg') do |defs|
       method.define_rest_argument('args')
     end
 
+    klass.define_method('ProvidePackage') do |method|
+      method.define_rest_argument('args')
+    end
+
     klass.define_method('RemoveLock') do |method|
       method.define_rest_argument('args')
     end
@@ -675,6 +676,10 @@ RubyLint.registry.register('Yast::Pkg') do |defs|
     end
 
     klass.define_method('ServiceDelete') do |method|
+      method.define_rest_argument('args')
+    end
+
+    klass.define_method('ServiceForceRefresh') do |method|
       method.define_rest_argument('args')
     end
 
