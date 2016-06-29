@@ -1,7 +1,7 @@
 # This file was automatically generated, any manual changes will be lost the
 # next time this file is generated.
 #
-# Platform: ruby 2.1.2
+# Platform: ruby 2.2.5
 
 RubyLint.registry.register('Yast::UI') do |defs|
   defs.define_constant('Yast::UI') do |klass|
