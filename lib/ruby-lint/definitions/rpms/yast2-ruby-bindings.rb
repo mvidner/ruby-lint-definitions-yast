@@ -1535,6 +1535,18 @@ RubyLint.registry.register('Yast') do |defs|
     klass.define_instance_method('to_s')
   end
 
+  defs.define_constant('Yast::Client::Profiler') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('start')
+
+    klass.define_method('start_from_env')
+
+    klass.define_method('stop') do |method|
+      method.define_optional_argument('output')
+    end
+  end
+
   defs.define_constant('Yast::Client::SCR') do |klass|
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 
@@ -2627,6 +2639,18 @@ RubyLint.registry.register('Yast') do |defs|
 
   end
 
+  defs.define_constant('Yast::Profiler') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('start')
+
+    klass.define_method('start_from_env')
+
+    klass.define_method('stop') do |method|
+      method.define_optional_argument('output')
+    end
+  end
+
   defs.define_constant('Yast::SCR') do |klass|
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 
@@ -3163,5 +3187,19 @@ RubyLint.registry.register('Yast') do |defs|
     klass.define_instance_method('call') do |method|
       method.define_rest_argument('arg1')
     end
+  end
+end
+# Fixup definitions created by ruby-lint-2.2.0
+yast_block = RubyLint.registry.get("Yast")
+
+RubyLint.registry.register("Yast") do |defs|
+  yast_block.call(defs)
+
+  klass = defs.lookup(:const, "Yast").lookup(:const, "Module")
+
+  # For some reason, RubyLint defines Yast::Module#publish (instance method)
+  # but in fact we need               Yast::Module.publish (class method)
+  klass.define_method('publish') do |method|
+    method.define_argument('options')
   end
 end
