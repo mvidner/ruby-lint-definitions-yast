@@ -951,6 +951,18 @@ RubyLint.registry.register('Yast::EncodingClass') do |defs|
     klass.define_instance_method('to_s')
   end
 
+  defs.define_constant('Yast::EncodingClass::Profiler') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('start')
+
+    klass.define_method('start_from_env')
+
+    klass.define_method('stop') do |method|
+      method.define_optional_argument('output')
+    end
+  end
+
   defs.define_constant('Yast::EncodingClass::SCR') do |klass|
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 

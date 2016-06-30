@@ -997,6 +997,18 @@ RubyLint.registry.register('Yast::PortRangesClass') do |defs|
 
   end
 
+  defs.define_constant('Yast::PortRangesClass::Profiler') do |klass|
+    klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
+
+    klass.define_method('start')
+
+    klass.define_method('start_from_env')
+
+    klass.define_method('stop') do |method|
+      method.define_optional_argument('output')
+    end
+  end
+
   defs.define_constant('Yast::PortRangesClass::SCR') do |klass|
     klass.inherits(defs.constant_proxy('Object', RubyLint.registry))
 
